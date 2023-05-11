@@ -336,7 +336,13 @@ class UppyS3MultipartController extends Controller
      */
     public function getSignedUrl(Request $request, int $partNumber)
     {
-        $key = $this->encodeURIComponent($request->input('key'));
+        $param = $request->input('key');
+
+        if (!$param) {            
+            return "";
+        }
+
+        $key = $this->encodeURIComponent(param);
 
         $command = $this->client->getCommand('UploadPart', [
             'Bucket'     => $this->bucket,
