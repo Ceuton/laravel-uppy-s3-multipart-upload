@@ -342,7 +342,7 @@ class UppyS3MultipartController extends Controller
             return "";
         }
 
-        $key = $this->encodeURIComponent(param);
+        $key = $this->encodeURIComponent($param);
 
         $command = $this->client->getCommand('UploadPart', [
             'Bucket'     => $this->bucket,
